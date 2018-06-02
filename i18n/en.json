@@ -1,0 +1,7 @@
+{
+  "@metadata": {
+    "authors": []
+  },
+  "radianttraining-desc": "This is an example extension",
+  "radianttraining-i18n-welcome": "Welcome to the localization file of the RadiantTraining extension."
+}

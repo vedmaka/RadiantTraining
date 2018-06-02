@@ -1,0 +1,52 @@
+{
+	"name": "RadiantTraining",
+	"version": "0.0.1",
+	"author": [
+		"Alexey"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:RadiantTraining",
+	"descriptionmsg": "radianttraining-desc",
+	"license-name": "MIT",
+	"type": "other",
+	"AutoloadClasses": {
+        "RadiantTraining": "RadiantTraining.class.php",
+		"RadiantTrainingHooks": "RadiantTraining.hooks.php",
+		"SpecialRadiantTraining": "specials/SpecialRadiantTraining.php"
+	},
+	"config": {
+		"RadiantTrainingEnableFoo": true
+	},
+	"callback": "RadiantTrainingHooks::onExtensionLoad",
+	"ExtensionMessagesFiles": {
+		"RadiantTrainingAlias": "RadiantTraining.i18n.alias.php"
+	},
+	"Hooks": {
+		"NameOfHook": [
+			"RadiantTrainingHooks::onNameOfHook"
+		]
+	},
+	"MessagesDirs": {
+		"RadiantTraining": [
+			"i18n"
+		]
+	},
+	"ResourceModules": {
+		"ext.radianttraining.foo": {
+			"scripts": [
+				"modules/ext.RadiantTraining.js",
+				"modules/ext.RadiantTraining.foo.js"
+			],
+			"styles": [
+				"modules/ext.RadiantTraining.foo.css"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "RadiantTraining"
+	},
+	"SpecialPages": {
+		"RadiantTraining": "SpecialRadiantTraining"
+	},
+	"manifest_version": 1
+}
