@@ -33,11 +33,10 @@
 	"ResourceModules": {
 		"ext.radianttraining.foo": {
 			"scripts": [
-				"modules/ext.RadiantTraining.js",
-				"modules/ext.RadiantTraining.foo.js"
+				"modules/ext.RadiantTraining.js"
 			],
 			"styles": [
-				"modules/ext.RadiantTraining.foo.css"
+				"modules/ext.RadiantTraining.css"
 			]
 		}
 	},
