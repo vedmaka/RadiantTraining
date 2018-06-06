@@ -9,7 +9,7 @@
 	"license-name": "MIT",
 	"type": "other",
 	"AutoloadClasses": {
-        "RadiantTraining": "RadiantTraining.class.php",
+		"RadiantTraining": "RadiantTraining.class.php",
 		"RadiantTrainingHooks": "RadiantTraining.hooks.php",
 		"SpecialRadiantTraining": "specials/SpecialRadiantTraining.php",
 		"TrainingBlockModel": "includes/TrainingBlockModel.php",

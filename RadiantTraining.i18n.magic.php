@@ -4,5 +4,5 @@
 $magicWords = array();
 
 $magicWords['en'] = array(
-    'training'      => array( 0, 'training' )
+	'training' => array( 0, 'training' )
 );

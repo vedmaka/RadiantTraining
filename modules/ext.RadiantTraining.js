@@ -1,5 +1,5 @@
-$(function(){
-	$('.training-block').each(function(){
-		new mw.trainingBlock( $(this) );
-	});
-});
+$( function () {
+	$( '.training-block' ).each( function () {
+		new mw.trainingBlock( $( this ) );
+	} );
+} );

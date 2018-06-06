@@ -38,12 +38,12 @@ class RadiantTraining {
 
 		$parser->getOutput()->addModules( 'ext.radianttraining.main' );
 
-		$inner = Html::openElement( 'label');
+		$inner = Html::openElement( 'label' );
 		$inner .= Html::input( null, '', 'checkbox', array( 'disabled' ) );
-		if( isset($params['title']) ) {
-			$inner .= Html::element('span', array(), $params['title']);
+		if ( isset( $params['title'] ) ) {
+			$inner .= Html::element( 'span', array(), $params['title'] );
 		}
-		$inner .= Html::closeElement('label');
+		$inner .= Html::closeElement( 'label' );
 
 		$html = Html::rawElement( 'div', array(
 			'class' => 'training-block training-block--loading',
@@ -55,6 +55,21 @@ class RadiantTraining {
 			$html,
 			'markerType' => 'nowiki'
 		);
+	}
+
+	/**
+	 * @param int    $page_id
+	 * @param string $text
+	 *
+	 * @throws \Wikimedia\Rdbms\DBUnexpectedError
+	 */
+	public function updateModulesOnPage( $page_id, $text ) {
+		$modules = $this->extractTrainingModulesFromText( $text );
+		if ( count( $modules ) ) {
+			$this->invalidateModules( $page_id, $modules );
+		} else {
+			$this->wipeModules( $page_id );
+		}
 	}
 
 	private function extractTrainingModulesFromText( $text ) {
@@ -88,22 +103,6 @@ class RadiantTraining {
 			}
 		}
 		return $modules;
-	}
-
-	/**
-	 * @param int $page_id
-	 *
-	 * @throws \Wikimedia\Rdbms\DBUnexpectedError
-	 */
-	public function wipeModules( $page_id ) {
-		$modules = TrainingBlockModel::findAll( array(
-			'page_id' => $page_id
-		) );
-		if ( $modules ) {
-			foreach ( $modules as $module ) {
-				$module->delete();
-			}
-		}
 	}
 
 	/**
@@ -172,17 +171,18 @@ class RadiantTraining {
 	}
 
 	/**
-	 * @param int    $page_id
-	 * @param string $text
+	 * @param int $page_id
 	 *
 	 * @throws \Wikimedia\Rdbms\DBUnexpectedError
 	 */
-	public function updateModulesOnPage( $page_id, $text ) {
-		$modules = $this->extractTrainingModulesFromText( $text );
-		if ( count( $modules ) ) {
-			$this->invalidateModules( $page_id, $modules );
-		} else {
-			$this->wipeModules( $page_id );
+	public function wipeModules( $page_id ) {
+		$modules = TrainingBlockModel::findAll( array(
+			'page_id' => $page_id
+		) );
+		if ( $modules ) {
+			foreach ( $modules as $module ) {
+				$module->delete();
+			}
 		}
 	}
 

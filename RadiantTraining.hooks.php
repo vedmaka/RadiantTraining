@@ -49,9 +49,9 @@ class RadiantTrainingHooks {
 		$wikiPage, $user, $content, $summary, $isMinor, $isWatch, $section, $flags, $revision, $status, $baseRevId, $undidRevId
 	) {
 
-		if( $content->getModel() == CONTENT_MODEL_WIKITEXT ) {
-			RadiantTraining::getInstance()->updateModulesOnPage(
-				$wikiPage->getTitle()->getArticleID(), $content->getWikitextForTransclusion() );
+		if ( $content->getModel() == CONTENT_MODEL_WIKITEXT ) {
+			RadiantTraining::getInstance()->updateModulesOnPage( $wikiPage->getTitle()
+			                                                              ->getArticleID(), $content->getWikitextForTransclusion() );
 		}
 
 	}
@@ -66,8 +66,9 @@ class RadiantTrainingHooks {
 	 * @param Revision $revision
 	 *
 	 */
-	public static function onTitleMoveComplete( &$title, &$newTitle, $user, $oldid, $newid,
-		$reason, $revision ) {
+	public static function onTitleMoveComplete(
+		&$title, &$newTitle, $user, $oldid, $newid, $reason, $revision
+	) {
 
 		// RadiantTraining::getInstance()->moveModules( $oldid, $newTitle->getArticleID() );
 

@@ -35,6 +35,29 @@ class RadiantTrainingApi extends ApiBase {
 	/**
 	 * @throws \Wikimedia\Rdbms\DBUnexpectedError
 	 */
+	private function doFetch() {
+		$page_id = $this->parsedParams['page_id'];
+		$block_id = $this->parsedParams['block_id'];
+		$user_id = $this->getUser()->getId();
+
+		$record = TrainingRecordModel::findBy( array(
+			'user_id' => $user_id,
+			'block_text_id' => $block_id,
+			'page_id' => $page_id
+		) );
+
+		$this->formattedData['is_completed'] = 0;
+		if ( $record ) {
+			$this->formattedData['is_completed'] = 1;
+		}
+
+		$this->formattedData['status'] = 1;
+
+	}
+
+	/**
+	 * @throws \Wikimedia\Rdbms\DBUnexpectedError
+	 */
 	private function doComplete() {
 
 		$this->mustBePosted();
@@ -81,29 +104,6 @@ class RadiantTrainingApi extends ApiBase {
 		}
 
 		$record->delete();
-
-	}
-
-	/**
-	 * @throws \Wikimedia\Rdbms\DBUnexpectedError
-	 */
-	private function doFetch() {
-		$page_id = $this->parsedParams['page_id'];
-		$block_id = $this->parsedParams['block_id'];
-		$user_id = $this->getUser()->getId();
-
-		$record = TrainingRecordModel::findBy( array(
-			'user_id' => $user_id,
-			'block_text_id' => $block_id,
-			'page_id' => $page_id
-		) );
-
-		$this->formattedData['is_completed'] = 0;
-		if ( $record ) {
-			$this->formattedData['is_completed'] = 1;
-		}
-
-		$this->formattedData['status'] = 1;
 
 	}
 

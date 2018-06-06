@@ -10,5 +10,5 @@ $specialPageAliases = array();
 
 /** English (English) */
 $specialPageAliases['en'] = array(
-    'RadiantTraining' => array( 'RadiantTraining' ),
+	'RadiantTraining' => array( 'RadiantTraining' ),
 );

@@ -1,7 +1,7 @@
 {
-  "@metadata": {
-    "authors": []
-  },
-  "radianttraining-desc": "Provides training functions for wiki",
-  "radianttraining-i18n-welcome": "Welcome to the localization file of the RadiantTraining extension."
+	"@metadata": {
+		"authors": []
+	},
+	"radianttraining-desc": "Provides training functions for wiki",
+	"radianttraining-i18n-welcome": "Welcome to the localization file of the RadiantTraining extension."
 }
