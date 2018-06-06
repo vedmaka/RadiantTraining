@@ -26,6 +26,7 @@ class RadiantTrainingHooks {
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater ) {
 		$updater->addExtensionTable( 'training_blocks', dirname( __FILE__ ) . '/schema/training_blocks.sql' );
+		$updater->addExtensionTable( 'training_records', dirname( __FILE__ ) . '/schema/training_records.sql' );
 	}
 
 	/**

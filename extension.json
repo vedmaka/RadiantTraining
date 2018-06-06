@@ -14,7 +14,9 @@
 		"SpecialRadiantTraining": "specials/SpecialRadiantTraining.php",
 		"TrainingBlockModel": "includes/TrainingBlockModel.php",
 		"TrainingModel": "includes/TrainingModel.php",
-		"ITrainingModel": "includes/ITrainingModel.php"
+		"ITrainingModel": "includes/ITrainingModel.php",
+		"RadiantTrainingApi": "includes/RadiantTrainingApi.php",
+		"TrainingRecordModel": "includes/TrainingRecordModel.php"
 	},
 	"config": {
 		"RadiantTrainingEnableFoo": true
@@ -46,6 +48,7 @@
 	"ResourceModules": {
 		"ext.radianttraining.main": {
 			"scripts": [
+				"modules/ext.RadiantTrainingBlock.js",
 				"modules/ext.RadiantTraining.js"
 			],
 			"styles": [
@@ -60,6 +63,9 @@
 	},
 	"SpecialPages": {
 		"RadiantTraining": "SpecialRadiantTraining"
+	},
+	"APIModules": {
+		"radianttraining": "RadiantTrainingApi"
 	},
 	"manifest_version": 1
 }
