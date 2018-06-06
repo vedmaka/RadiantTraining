@@ -1,0 +1,18 @@
+.training-block {
+	display: inline-block;
+}
+
+.training-block label {
+
+}
+
+.training-block label input[type="checkbox"] {
+	width: 20px;
+	height: 20px;
+}
+
+.training-block label span {
+	margin-left: 6px;
+	position: relative;
+	top: -4px;
+}
