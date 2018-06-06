@@ -11,18 +11,31 @@
 	"AutoloadClasses": {
         "RadiantTraining": "RadiantTraining.class.php",
 		"RadiantTrainingHooks": "RadiantTraining.hooks.php",
-		"SpecialRadiantTraining": "specials/SpecialRadiantTraining.php"
+		"SpecialRadiantTraining": "specials/SpecialRadiantTraining.php",
+		"TrainingBlockModel": "includes/TrainingBlockModel.php",
+		"TrainingModel": "includes/TrainingModel.php",
+		"ITrainingModel": "includes/ITrainingModel.php"
 	},
 	"config": {
 		"RadiantTrainingEnableFoo": true
 	},
 	"callback": "RadiantTrainingHooks::onExtensionLoad",
 	"ExtensionMessagesFiles": {
-		"RadiantTrainingAlias": "RadiantTraining.i18n.alias.php"
+		"RadiantTrainingAlias": "RadiantTraining.i18n.alias.php",
+		"RadiantTrainingMagic": "RadiantTraining.i18n.magic.php"
 	},
 	"Hooks": {
-		"NameOfHook": [
-			"RadiantTrainingHooks::onNameOfHook"
+		"ParserFirstCallInit": [
+			"RadiantTrainingHooks::onParserFirstCallInit"
+		],
+		"LoadExtensionSchemaUpdates": [
+			"RadiantTrainingHooks::onLoadExtensionSchemaUpdates"
+		],
+		"PageContentSaveComplete": [
+			"RadiantTrainingHooks::onPageContentSaveComplete"
+		],
+		"TitleMoveComplete": [
+			"RadiantTrainingHooks::onTitleMoveComplete"
 		]
 	},
 	"MessagesDirs": {
@@ -31,7 +44,7 @@
 		]
 	},
 	"ResourceModules": {
-		"ext.radianttraining.foo": {
+		"ext.radianttraining.main": {
 			"scripts": [
 				"modules/ext.RadiantTraining.js"
 			],
