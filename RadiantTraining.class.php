@@ -39,14 +39,14 @@ class RadiantTraining {
 		$parser->getOutput()->addModules( 'ext.radianttraining.main' );
 
 		$inner = Html::openElement( 'label');
-		$inner .= Html::input( null, '', 'checkbox' );
+		$inner .= Html::input( null, '', 'checkbox', array( 'disabled' ) );
 		if( isset($params['title']) ) {
 			$inner .= Html::element('span', array(), $params['title']);
 		}
 		$inner .= Html::closeElement('label');
 
 		$html = Html::rawElement( 'div', array(
-			'class' => 'training-block',
+			'class' => 'training-block training-block--loading',
 			'data-title' => isset( $params['title'] ) ? trim( str_replace( '"', '', $params['title'] ) ) : '',
 			'data-block-id' => trim( str_replace( '"', '', $params['id'] ) )
 		), $inner );
