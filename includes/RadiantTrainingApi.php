@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class RadiantTrainingApi
+ */
 class RadiantTrainingApi extends ApiBase {
 
 	private $formattedData = array();
@@ -25,10 +28,13 @@ class RadiantTrainingApi extends ApiBase {
 				break;
 		}
 
-		$this->getResult()->addValue(null, $this->getModuleName(), $this->formattedData);
+		$this->getResult()->addValue( null, $this->getModuleName(), $this->formattedData );
 
 	}
 
+	/**
+	 * @throws \Wikimedia\Rdbms\DBUnexpectedError
+	 */
 	private function doComplete() {
 
 		$this->mustBePosted();
@@ -37,8 +43,12 @@ class RadiantTrainingApi extends ApiBase {
 		$block_id = $this->parsedParams['block_id'];
 		$user_id = $this->getUser()->getId();
 
-		$record = TrainingRecordModel::findBy( array( 'user_id' => $user_id, 'block_text_id' => $block_id, 'page_id' => $page_id ) );
-		if( $record !== null ) {
+		$record = TrainingRecordModel::findBy( array(
+			'user_id' => $user_id,
+			'block_text_id' => $block_id,
+			'page_id' => $page_id
+		) );
+		if ( $record !== null ) {
 			return;
 		}
 
@@ -50,6 +60,9 @@ class RadiantTrainingApi extends ApiBase {
 
 	}
 
+	/**
+	 * @throws \Wikimedia\Rdbms\DBUnexpectedError
+	 */
 	private function doRemove() {
 
 		$this->mustBePosted();
@@ -58,8 +71,12 @@ class RadiantTrainingApi extends ApiBase {
 		$block_id = $this->parsedParams['block_id'];
 		$user_id = $this->getUser()->getId();
 
-		$record = TrainingRecordModel::findBy( array( 'user_id' => $user_id, 'block_text_id' => $block_id, 'page_id' => $page_id ) );
-		if( !$record ) {
+		$record = TrainingRecordModel::findBy( array(
+			'user_id' => $user_id,
+			'block_text_id' => $block_id,
+			'page_id' => $page_id
+		) );
+		if ( !$record ) {
 			return;
 		}
 
@@ -75,10 +92,14 @@ class RadiantTrainingApi extends ApiBase {
 		$block_id = $this->parsedParams['block_id'];
 		$user_id = $this->getUser()->getId();
 
-		$record = TrainingRecordModel::findBy( array( 'user_id' => $user_id, 'block_text_id' => $block_id, 'page_id' => $page_id ) );
+		$record = TrainingRecordModel::findBy( array(
+			'user_id' => $user_id,
+			'block_text_id' => $block_id,
+			'page_id' => $page_id
+		) );
 
 		$this->formattedData['is_completed'] = 0;
-		if( $record ) {
+		if ( $record ) {
 			$this->formattedData['is_completed'] = 1;
 		}
 
@@ -86,6 +107,9 @@ class RadiantTrainingApi extends ApiBase {
 
 	}
 
+	/**
+	 * @return array
+	 */
 	protected function getAllowedParams() {
 		return array(
 			'do' => array(
