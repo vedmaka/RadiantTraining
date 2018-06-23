@@ -7,5 +7,5 @@ CREATE TABLE /*_*/training_blocks
   created_at int not null,
   updated_at int not null,
   PRIMARY KEY (id),
-  INDEX (id),
+  INDEX (id)
 ) /* $wgDbTableOptions */;
