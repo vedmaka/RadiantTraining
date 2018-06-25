@@ -90,6 +90,13 @@ class TrainingModel implements ITrainingModel {
 		return $entries;
 	}
 
+	public static function countAll( $condition = null ) {
+		$db = wfGetDB(DB_SLAVE);
+		$ret = $db->selectRowCount( static::getTable(), 'id', $condition );
+
+		return $ret;
+	}
+
 	/**
 	 * @param $condition
 	 *

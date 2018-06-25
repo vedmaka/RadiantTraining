@@ -1,0 +1,31 @@
+.training--training-status {
+	display: inline-block;
+}
+
+.training--training-status::before {
+	content: "";
+	width: 11px;
+	height: 11px;
+	border-radius: 10px;
+	margin: 0 5px 0 0;
+	border: 2px solid lightgray;
+	background-color: lightgray;
+	display: inline-block;
+	position: relative;
+	top: -1px;
+}
+
+.training--training-status.status-not-done::before {
+	background-color: transparent;
+	border-color: grey;
+}
+
+.training--training-status.status-partially-done::before {
+	background-color: orange;
+	border-color: orange;
+}
+
+.training--training-status.status-done::before {
+	background-color: green;
+	border-color: green;
+}

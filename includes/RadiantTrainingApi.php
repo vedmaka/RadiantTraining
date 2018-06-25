@@ -10,6 +10,7 @@ class RadiantTrainingApi extends ApiBase {
 
 	/**
 	 * @throws \Wikimedia\Rdbms\DBUnexpectedError
+	 * @throws ApiUsageException
 	 */
 	public function execute() {
 
@@ -26,9 +27,32 @@ class RadiantTrainingApi extends ApiBase {
 			case 'remove':
 				$this->doRemove();
 				break;
+			case 'stat':
+				$this->doStat();
+				break;
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $this->formattedData );
+
+	}
+
+	/**
+	 * @return array
+	 */
+	private function doStat() {
+
+		$total = TrainingBlockModel::countAll( array( 'page_id' => $this->parsedParams['page_id'] ) );
+		$records = TrainingRecordModel::findAll( array(
+			'page_id' => $this->parsedParams['page_id'],
+			'user_id' => $this->getUser()->getId()
+		) );
+
+		$this->formattedData['result'] = array(
+			'count' => count( $records ),
+			'total' => $total
+		);
+
+		$this->formattedData['status'] = 1;
 
 	}
 
@@ -51,7 +75,7 @@ class RadiantTrainingApi extends ApiBase {
 			$this->formattedData['is_completed'] = 1;
 		}
 
-		$this->formattedData['is_allowed'] = $this->getUser()->isAllowed('do-training') ? 1 : 0;
+		$this->formattedData['is_allowed'] = $this->getUser()->isAllowed( 'do-training' ) ? 1 : 0;
 
 		$this->formattedData['status'] = 1;
 
@@ -65,8 +89,8 @@ class RadiantTrainingApi extends ApiBase {
 
 		$this->mustBePosted();
 
-		if( !$this->getUser()->isAllowed('do-training') ) {
-			$this->dieWithError('');
+		if ( !$this->getUser()->isAllowed( 'do-training' ) ) {
+			$this->dieWithError( '' );
 		}
 
 		$page_id = $this->parsedParams['page_id'];
@@ -98,8 +122,8 @@ class RadiantTrainingApi extends ApiBase {
 
 		$this->mustBePosted();
 
-		if( !$this->getUser()->isAllowed('do-training') ) {
-			$this->dieWithError('');
+		if ( !$this->getUser()->isAllowed( 'do-training' ) ) {
+			$this->dieWithError( '' );
 		}
 
 		$page_id = $this->parsedParams['page_id'];

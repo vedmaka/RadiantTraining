@@ -1,4 +1,4 @@
-(function ( $, mw ) {
+( function ( $, mw ) {
 
 	/**
 	 *
@@ -48,7 +48,7 @@
 				if ( completed ) {
 					self._$checkBox.prop( 'checked', true );
 				}
-				if( resp.is_allowed ) {
+				if ( resp.is_allowed ) {
 					self._$checkBox.prop( 'disabled', false );
 				}
 				self._$element.removeClass( 'training-block--loading' );
@@ -77,4 +77,4 @@
 
 	mw.trainingBlock = TrainingBlock;
 
-})( jQuery, mediaWiki );
+} )( jQuery, mediaWiki );

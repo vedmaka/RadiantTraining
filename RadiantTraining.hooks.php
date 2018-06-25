@@ -19,6 +19,7 @@ class RadiantTrainingHooks {
 	 */
 	public static function onParserFirstCallInit( $parser ) {
 		$parser->setFunctionTagHook( 'training', 'RadiantTraining::renderBlock', SFH_OBJECT_ARGS );
+		$parser->setFunctionTagHook( 'training_status', 'RadiantTraining::render_training_status', SFH_OBJECT_ARGS );
 	}
 
 	/**

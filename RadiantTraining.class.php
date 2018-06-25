@@ -216,4 +216,34 @@ class RadiantTraining {
 		return false;
 	}
 
+
+	/**
+	 * @param Parser  $parser
+	 * @param PPFrame $frame
+	 * @param string  $content
+	 * @param array   $params
+	 *
+	 * @return array|string
+	 */
+	public static function render_training_status( &$parser, $frame, $content = '', $params = array() ) {
+
+		$titleText = $content;
+		$title = Title::newFromText($titleText);
+		if( !$title || !$title->exists() ) {
+			return '<b style="color: red">Error in "render_training_status" function: title does not exists!</b>';
+		}
+
+		$html = '<div class="training--training-status" data-page="'.$title->getArticleID().'">...</div>';
+
+		$parser->getOutput()->addModules('ext.radianttraining.status');
+
+		return array(
+			$html,
+			'noparse' => false,
+			'isHTML' => true,
+			'markerType' => 'general'
+		);
+
+	}
+
 }

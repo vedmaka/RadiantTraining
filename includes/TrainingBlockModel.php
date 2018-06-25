@@ -45,5 +45,4 @@ class TrainingBlockModel extends TrainingModel {
 		return 'training_blocks';
 	}
 
-
 }

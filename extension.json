@@ -57,13 +57,28 @@
 			"styles": [
 				"modules/ext.RadiantTraining.css"
 			],
-			"position": "top"
+			"position": "top",
+			"dependencies": [
+				"mediawiki.api"
+			]
 		},
 		"ext.radianttraining.styles": {
 			"styles": [
 				"modules/ext.RadiantTraining.css"
 			],
 			"position": "top"
+		},
+		"ext.radianttraining.status": {
+			"scripts": [
+				"modules/ext.RadiantTrainingStatus.js"
+			],
+			"styles": [
+				"modules/ext.RadiantTrainingStatus.css"
+			],
+			"position": "top",
+			"dependencies": [
+				"mediawiki.api"
+			]
 		}
 	},
 	"ResourceFileModulePaths": {
