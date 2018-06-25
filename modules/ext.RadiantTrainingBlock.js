@@ -48,7 +48,9 @@
 				if ( completed ) {
 					self._$checkBox.prop( 'checked', true );
 				}
-				self._$checkBox.prop( 'disabled', false );
+				if( resp.is_allowed ) {
+					self._$checkBox.prop( 'disabled', false );
+				}
 				self._$element.removeClass( 'training-block--loading' );
 			}
 

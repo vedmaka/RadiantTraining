@@ -51,16 +51,23 @@ class RadiantTrainingApi extends ApiBase {
 			$this->formattedData['is_completed'] = 1;
 		}
 
+		$this->formattedData['is_allowed'] = $this->getUser()->isAllowed('do-training') ? 1 : 0;
+
 		$this->formattedData['status'] = 1;
 
 	}
 
 	/**
 	 * @throws \Wikimedia\Rdbms\DBUnexpectedError
+	 * @throws ApiUsageException
 	 */
 	private function doComplete() {
 
 		$this->mustBePosted();
+
+		if( !$this->getUser()->isAllowed('do-training') ) {
+			$this->dieWithError('');
+		}
 
 		$page_id = $this->parsedParams['page_id'];
 		$block_id = $this->parsedParams['block_id'];
@@ -85,10 +92,15 @@ class RadiantTrainingApi extends ApiBase {
 
 	/**
 	 * @throws \Wikimedia\Rdbms\DBUnexpectedError
+	 * @throws ApiUsageException
 	 */
 	private function doRemove() {
 
 		$this->mustBePosted();
+
+		if( !$this->getUser()->isAllowed('do-training') ) {
+			$this->dieWithError('');
+		}
 
 		$page_id = $this->parsedParams['page_id'];
 		$block_id = $this->parsedParams['block_id'];

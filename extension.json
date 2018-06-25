@@ -77,7 +77,8 @@
 		"radianttraining": "RadiantTrainingApi"
 	},
 	"AvailableRights": [
-		"dotraining"
+		"do-training",
+		"manage-training"
 	],
 	"GroupPermissions": {
 		"user": {
