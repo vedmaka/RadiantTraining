@@ -39,7 +39,7 @@ class SpecialRadiantTraining extends SpecialPage {
 			$item = array();
 			$user = User::newFromId($user_id);
 			$item['username'] = $user->getName();
-			$item['userlink'] = '#';
+			$item['userlink'] = $user->getUserPage()->getFullURL();
 
 			$userRecords = TrainingRecordModel::findAll( array( 'user_id' => $user_id ) );
 			$completedByUser = count( $userRecords ); //TrainingRecordModel::countAll( array( 'user_id' => $user_id ) );
