@@ -19,10 +19,10 @@
 
 .training--header-control {
 	text-align: right;
+	font-size: 15px;
+	line-height: 18px;
 }
 
-.training--header-control span {
-	position: relative;
-	top: 2px;
-	margin: 0 0 0 8px;
+.training--header-control button {
+	padding: 4px 6px;
 }

@@ -86,10 +86,8 @@ class RadiantTrainingHooks {
 		if( RadiantTraining::getInstance()->hasTrainings( $article->getId() ) ) {
 			if( $out->getUser()->isAllowed('do-training') ) {
 				$out->enableClientCache(false);
-				$checkbox = Html::input( null, '', 'checkbox' );
-				$span = Html::rawElement( 'span', array(), 'Mark whole page as completed' );
-				$input = Html::rawElement( 'label', array(), $checkbox . $span );
-				$html = Html::rawElement( 'div', array( 'class' => 'training--header-control' ), $input );
+				$span = Html::rawElement( 'button', array(), 'Mark whole page as completed' );
+				$html = Html::rawElement( 'div', array( 'class' => 'training--header-control' ), $span );
 				$out->addHTML( $html );
 			}
 		}
