@@ -16,3 +16,13 @@
 	position: relative;
 	top: -4px;
 }
+
+.training--header-control {
+	text-align: right;
+}
+
+.training--header-control span {
+	position: relative;
+	top: 2px;
+	margin: 0 0 0 8px;
+}

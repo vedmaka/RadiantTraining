@@ -36,6 +36,7 @@ class RadiantTraining {
 			return 'Error: ID parameter is not specified for training block tag!';
 		}
 
+		$parser->getOutput()->addModuleStyles( 'ext.radianttraining.styles' );
 		$parser->getOutput()->addModules( 'ext.radianttraining.main' );
 
 		$inner = Html::openElement( 'label' );
@@ -200,6 +201,19 @@ class RadiantTraining {
 				$module->save();
 			}
 		}
+	}
+
+	/**
+	 * @param $page_id
+	 * @return bool
+	 * @throws \Wikimedia\Rdbms\DBUnexpectedError
+	 */
+	public function hasTrainings( $page_id ) {
+		$modules = TrainingBlockModel::findBy( array( 'page_id' => $page_id ) );
+		if( $modules ) {
+			return true;
+		}
+		return false;
 	}
 
 }

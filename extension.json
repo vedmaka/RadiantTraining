@@ -38,6 +38,9 @@
 		],
 		"TitleMoveComplete": [
 			"RadiantTrainingHooks::onTitleMoveComplete"
+		],
+		"ArticleViewHeader": [
+			"RadiantTrainingHooks::onArticleViewHeader"
 		]
 	},
 	"MessagesDirs": {
@@ -55,6 +58,12 @@
 				"modules/ext.RadiantTraining.css"
 			],
 			"position": "top"
+		},
+		"ext.radianttraining.styles": {
+			"styles": [
+				"modules/ext.RadiantTraining.css"
+			],
+			"position": "top"
 		}
 	},
 	"ResourceFileModulePaths": {
@@ -66,6 +75,17 @@
 	},
 	"APIModules": {
 		"radianttraining": "RadiantTrainingApi"
+	},
+	"AvailableRights": [
+		"dotraining"
+	],
+	"GroupPermissions": {
+		"user": {
+			"do-training": true
+		},
+		"sysop": {
+			"manage-training": true
+		}
 	},
 	"manifest_version": 1
 }

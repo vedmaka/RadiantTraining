@@ -74,4 +74,26 @@ class RadiantTrainingHooks {
 
 	}
 
+	/**
+	 * @param Article $article
+	 * @param bool $outputDone
+	 * @param bool $pcache
+	 * @throws \Wikimedia\Rdbms\DBUnexpectedError
+	 */
+	public static function onArticleViewHeader( &$article, &$outputDone, &$pcache ) {
+
+		$out = $article->getContext()->getOutput();
+		if( RadiantTraining::getInstance()->hasTrainings( $article->getId() ) ) {
+			if( $out->getUser()->isAllowed('do-training') ) {
+				$out->enableClientCache(false);
+				$checkbox = Html::input( null, '', 'checkbox' );
+				$span = Html::rawElement( 'span', array(), 'Mark whole page as completed' );
+				$input = Html::rawElement( 'label', array(), $checkbox . $span );
+				$html = Html::rawElement( 'div', array( 'class' => 'training--header-control' ), $input );
+				$out->addHTML( $html );
+			}
+		}
+
+	}
+
 }
