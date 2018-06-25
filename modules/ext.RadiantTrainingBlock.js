@@ -9,6 +9,7 @@
 		this._$checkBox = null;
 		this._title = '';
 		this._block_id = null;
+		//this._block_id_id = null;
 		this._init();
 		this._load();
 		this._bind();
@@ -25,6 +26,7 @@
 		}
 
 		this._block_id = this._$element.data( 'block-id' );
+		//this._block_id_id = this._$element.data( 'block-id-id' );
 
 		this._$checkBox = this._$element.find( 'input[type="checkbox"]' );
 
@@ -40,6 +42,7 @@
 			do: 'fetch',
 			page_id: mw.config.get( 'wgArticleId' ),
 			block_id: this._block_id
+			//block_id_id: this._block_id_id,
 		} ).done( function ( data ) {
 
 			var resp = data.radianttraining;

@@ -79,6 +79,15 @@
 			"dependencies": [
 				"mediawiki.api"
 			]
+		},
+		"ext.radianttraining.special": {
+			"scripts": [
+				"modules/ext.RadiantTrainingSpecial.js"
+			],
+			"styles": [
+				"modules/ext.RadiantTrainingSpecial.css"
+			],
+			"position": "top"
 		}
 	},
 	"ResourceFileModulePaths": {

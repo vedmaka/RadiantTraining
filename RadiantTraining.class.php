@@ -49,7 +49,8 @@ class RadiantTraining {
 		$html = Html::rawElement( 'div', array(
 			'class' => 'training-block training-block--loading',
 			'data-title' => isset( $params['title'] ) ? trim( str_replace( '"', '', $params['title'] ) ) : '',
-			'data-block-id' => trim( str_replace( '"', '', $params['id'] ) )
+			'data-block-id' => trim( str_replace( '"', '', $params['id'])),
+			'id' => $params['id']
 		), $inner );
 
 		return array(

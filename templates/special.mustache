@@ -1,0 +1,32 @@
+<p>
+	Training statistics for all users
+</p>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>User</th>
+			<th>Progress</th>
+			<th>Details</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{# users }}
+		<tr>
+			<td>
+				<a href="{{& userlink }}">{{ username }}</a>
+			</td>
+			<td>
+				{{ progress }}
+			</td>
+			<td>
+				<ul>
+				{{# records }}
+					<li>Completed {{& title }} at {{& page }}</li>
+				{{/records}}
+				</ul>
+			</td>
+		</tr>
+		{{/users}}
+	</tbody>
+</table>

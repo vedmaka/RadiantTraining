@@ -62,11 +62,13 @@ class RadiantTrainingApi extends ApiBase {
 	private function doFetch() {
 		$page_id = $this->parsedParams['page_id'];
 		$block_id = $this->parsedParams['block_id'];
+		//$block_id_id = $this->parsedParams['block_id_id'];
 		$user_id = $this->getUser()->getId();
 
 		$record = TrainingRecordModel::findBy( array(
 			'user_id' => $user_id,
 			'block_text_id' => $block_id,
+			//'block_id' => $block_id_id,
 			'page_id' => $page_id
 		) );
 
@@ -160,6 +162,10 @@ class RadiantTrainingApi extends ApiBase {
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_TYPE => 'string'
 			),
+			/*'block_id_id' => array(
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_TYPE => 'integer'
+			),*/
 		);
 	}
 
